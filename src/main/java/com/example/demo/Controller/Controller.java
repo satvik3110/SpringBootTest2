@@ -15,23 +15,23 @@ public class Controller {
     private ProductService service;
 
     @GetMapping("/products")
-    public List<Product> findAll(){
+    public List<Product> findAll() {
         return service.getAll();
     }
 
     @PostMapping("/products")
-    public List<Product> addProduct(@RequestBody Product product){
+    public List<Product> addProduct(@RequestBody Product product) {
         service.addProduct(product);
         return findAll();
     }
 
-    @GetMapping(value = "/products" , params = "string")
-    public List<Product> findByName(String string){
-        return service.findByProductName(string);
+    @GetMapping(value = "/products", params = "name")
+    public List<Product> findByName(String name) {
+        return service.findByProductName(name);
     }
 
-    @GetMapping(value = "/products", params = "number")
-    public List<Product> findByPrice(BigDecimal number){
-        return service.findByProductPrice(number);
+    @GetMapping(value = "/products", params = "price")
+    public List<Product> findByPrice(BigDecimal price) {
+        return service.findByProductPrice(price);
     }
 }
